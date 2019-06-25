@@ -1,3 +1,6 @@
+/**
+ * 代码及图片素材来自于：https://k8w.github.io/webgl_2d_benchmark/egret/
+ */
 var __reflect = (this && this.__reflect) || function (p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
@@ -123,28 +126,28 @@ var Main = (function (_super) {
 }(eui.UILayer));
 __reflect(Main.prototype, "Main");
 //显示FPS
-var fpsCon = document.createElement('div');
-Object.assign(fpsCon.style, {
-    position: 'fixed',
-    background: '#000',
-    color: '#fff',
-    top: 0,
-    left: 0
-});
-document.body.appendChild(fpsCon);
-var arrFps = new Float64Array(10);
-var lastTime = Date.now();
-var pos = 0;
-function updateFps() {
-    var now = Date.now();
-    var delta = now - lastTime;
-    var fps = 1000 / delta;
-    arrFps[pos++] = fps;
-    if (pos >= arrFps.length) {
-        pos = 0;
-    }
-    fpsCon.innerHTML = 'FPS: ' + (arrFps.reduce(function (prev, next) { return prev + next; }) / arrFps.length | 0);
-    lastTime = now;
-    requestAnimationFrame(updateFps);
-}
-requestAnimationFrame(updateFps);
+// let fpsCon = document.createElement('div');
+// Object.assign(fpsCon.style, {
+//     position: 'fixed',
+//     background: '#000',
+//     color: '#fff',
+//     top: 0,
+//     left: 0
+// })
+// document.body.appendChild(fpsCon);
+// let arrFps = new Float64Array(10);
+// let lastTime = Date.now();
+// let pos = 0;
+// function updateFps() {
+//     let now = Date.now();
+//     let delta = now - lastTime;
+//     let fps = 1000 / delta;
+//     arrFps[pos++] = fps;
+//     if (pos >= arrFps.length) {
+//         pos = 0;
+//     }
+//     fpsCon.innerHTML = 'FPS: ' + (arrFps.reduce((prev, next) => prev + next) / arrFps.length | 0);
+//     lastTime = now;
+//     requestAnimationFrame(updateFps);
+// }
+// requestAnimationFrame(updateFps); 
