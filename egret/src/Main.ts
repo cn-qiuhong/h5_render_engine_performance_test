@@ -63,7 +63,7 @@ class Main extends eui.UILayer {
 
 //显示FPS
 let fpsCon = document.createElement('div');
-Object.assign(fpsCon.style, {
+Object['assign'](fpsCon.style, {
     position: 'fixed',
     background: '#000',
     color: '#fff',
