@@ -11,7 +11,7 @@ var H_HEIGHT = 1136;
 function preload() {
     var load = this.load;
     for (var i = 0; i < TEXTURE_COUNT; i++) {
-        load.image('' + i, './ims/' + i + '.png');
+        load.image('' + i, '../ims/' + i + '.png');
     }
 }
 
