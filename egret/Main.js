@@ -27,8 +27,7 @@ var Main = (function (_super) {
     Main.prototype.onResourceLoadComplete = function () {
         var bmps = [];
         for (var i = 0; i < SPRITE_COUNT; ++i) {
-            var idx = i % TEXTURE_COUNT
-            var bmp = new eui.Image(idx + '_png')
+            var bmp = new egret.Bitmap()
             bmp.width = bmp.height = 64;
             bmp.anchorOffsetX = bmp.width * 0.5;
             bmp.anchorOffsetY = bmp.height * 0.5;
@@ -36,6 +35,20 @@ var Main = (function (_super) {
             bmp.y = H_HEIGHT / H_COUNT * (i / W_COUNT | 0);
             this.addChild(bmp);
             bmps.push(bmp);
+        }
+        var href = location.href
+        var idx = href.indexOf('/egret/')
+        href = href.substr(0, idx + 1)
+        function loadIm(i) {
+            var url = href + 'ims/' + i + '.png'
+            RES.getResByUrl(url, function (texture) {
+                for (var j = i; j < SPRITE_COUNT; j += TEXTURE_COUNT) {
+                    bmps[j].texture = texture
+                }
+            })
+        }
+        for (var i = 0; i < TEXTURE_COUNT; i++) {
+            loadIm(i)
         }
         this.addEventListener(egret.Event.ENTER_FRAME, function () {
             for (var _i = 0, bmps_1 = bmps; _i < bmps_1.length; _i++) {
