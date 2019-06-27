@@ -16,7 +16,6 @@ export default class Main extends cc.Component {
         let bmps: cc.Node[] = []
         for (let i = 0; i < SPRITE_COUNT; ++i) {
             let bmp = new cc.Node()
-            bmp.width = bmp.height = 64;
             bmp.anchorX = 0.5;
             bmp.anchorY = 0.5;
             bmp.x = W_WIDTH / W_COUNT * (i % W_COUNT) - 320;
@@ -25,16 +24,18 @@ export default class Main extends cc.Component {
             bmps.push(bmp);
         }
 
-        function loadIm(i: number) {
+        for (let i = 0; i < TEXTURE_COUNT; i++) {
             cc.loader.load('https://cn-qiuhong.github.io/performanceTest/ims/' + i + '.png', (e, t) => {
                 let sf = new cc.SpriteFrame(t)
                 for (let j = i; j < SPRITE_COUNT; j += 100) {
                     let n = bmps[j]
                     let sprit = n.addComponent(cc.Sprite)
                     sprit.spriteFrame = sf
+                    n.width = n.height = 64
                 }
             })
         }
+
 
         this.schedule(() => {
             for (let bmp of bmps) {
