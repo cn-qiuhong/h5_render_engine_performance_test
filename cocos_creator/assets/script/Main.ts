@@ -11,35 +11,36 @@ const H_HEIGHT = 1136;
 @ccclass
 export default class Main extends cc.Component {
     onLoad() {
-        cc.loader.loadResDir('ims', () => {
-            let stage = this.node
+        let stage = this.node
 
-            let textures: any[] = [];
-            for (let i = 0; i < TEXTURE_COUNT; ++i) {
-                let im = 'ims/' + i
-                textures[i] = cc.loader.getRes(im);
-            }
+        let bmps: cc.Node[] = []
+        for (let i = 0; i < SPRITE_COUNT; ++i) {
+            let bmp = new cc.Node()
+            bmp.width = bmp.height = 64;
+            bmp.anchorX = 0.5;
+            bmp.anchorY = 0.5;
+            bmp.x = W_WIDTH / W_COUNT * (i % W_COUNT) - 320;
+            bmp.y = H_HEIGHT / H_COUNT * (i / W_COUNT | 0) - 568;
+            stage.addChild(bmp);
+            bmps.push(bmp);
+        }
 
-            let bmps: cc.Node[] = []
-            for (let i = 0; i < SPRITE_COUNT; ++i) {
-                let bmp = new cc.Node()
-                let bm = bmp.addComponent(cc.Sprite)
-                bm.spriteFrame = new cc.SpriteFrame(textures[i % TEXTURE_COUNT])
-                bmp.width = bmp.height = 64;
-                bmp.anchorX = 0.5;
-                bmp.anchorY = 0.5;
-                bmp.x = W_WIDTH / W_COUNT * (i % W_COUNT) - 320;
-                bmp.y = H_HEIGHT / H_COUNT * (i / W_COUNT | 0) - 568;
-                stage.addChild(bmp);
-                bmps.push(bmp);
-            }
-
-            this.schedule(() => {
-                for (let bmp of bmps) {
-                    bmp.rotation += 3;
+        function loadIm(i: number) {
+            cc.loader.load('https://cn-qiuhong.github.io/performanceTest/ims/' + i + '.png', (e, t) => {
+                let sf = new cc.SpriteFrame(t)
+                for (let j = i; j < SPRITE_COUNT; j += 100) {
+                    let n = bmps[j]
+                    let sprit = n.addComponent(cc.Sprite)
+                    sprit.spriteFrame = sf
                 }
-            }, 0);
-        })
+            })
+        }
+
+        this.schedule(() => {
+            for (let bmp of bmps) {
+                bmp.rotation += 3;
+            }
+        }, 0);
     }
 }
 
