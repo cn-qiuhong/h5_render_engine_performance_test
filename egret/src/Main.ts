@@ -27,7 +27,7 @@ class Main extends eui.UILayer {
     private async loadResource() {
         try {
             await RES.loadConfig("resource/default.res.json", "resource/");
-            await RES.loadGroup('preload')
+            // await RES.loadGroup('preload')
         }
         catch (e) {
             console.error(e);

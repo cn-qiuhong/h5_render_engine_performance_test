@@ -82,19 +82,16 @@ var Main = (function (_super) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 3, , 4]);
+                        _a.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, RES.loadConfig("resource/default.res.json", "resource/")];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, RES.loadGroup('preload')];
+                        return [3 /*break*/, 3];
                     case 2:
-                        _a.sent();
-                        return [3 /*break*/, 4];
-                    case 3:
                         e_1 = _a.sent();
                         console.error(e_1);
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
                 }
             });
         });
@@ -127,7 +124,7 @@ var Main = (function (_super) {
 __reflect(Main.prototype, "Main");
 //显示FPS
 var fpsCon = document.createElement('div');
-Object.assign(fpsCon.style, {
+Object['assign'](fpsCon.style, {
     position: 'fixed',
     background: '#000',
     color: '#fff',
