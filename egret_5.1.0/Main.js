@@ -131,4 +131,3 @@ function updateFps() {
     requestAnimationFrame(updateFps);
 }
 requestAnimationFrame(updateFps);
-//# sourceMappingURL=Main.js.map
