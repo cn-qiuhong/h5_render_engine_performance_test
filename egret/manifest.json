@@ -7,6 +7,6 @@
 		"libs/modules/promise/promise.min.js"
 	],
 	"game": [
-		"bin-debug/Main.js"
+		"Main.js"
 	]
 }

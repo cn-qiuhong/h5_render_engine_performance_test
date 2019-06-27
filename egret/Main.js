@@ -1,15 +1,12 @@
-/**
- * 代码及图片素材来自于：https://k8w.github.io/webgl_2d_benchmark/egret/
- */
 var __reflect = (this && this.__reflect) || function (p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
-var __extends = this && this.__extends || function __extends(t, e) { 
- function r() { 
- this.constructor = t;
-}
-for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
-r.prototype = e.prototype, t.prototype = new r();
+var __extends = this && this.__extends || function __extends(t, e) {
+    function r() {
+        this.constructor = t;
+    }
+    for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
+    r.prototype = e.prototype, t.prototype = new r();
 };
 var TEXTURE_COUNT = 100;
 var SPRITE_COUNT = 2000;
@@ -28,13 +25,10 @@ var Main = (function (_super) {
         RES.loadConfig("resource/default.res.json", "resource/");
     };
     Main.prototype.onResourceLoadComplete = function () {
-        var textures = [];
-        for (var i = 0; i < TEXTURE_COUNT; ++i) {
-            textures[i] = RES.getRes(i + '_png');
-        }
         var bmps = [];
         for (var i = 0; i < SPRITE_COUNT; ++i) {
-            var bmp = new egret.Bitmap(textures[i % TEXTURE_COUNT]);
+            var idx = i % TEXTURE_COUNT
+            var bmp = new egret.Image(idx + '_png')
             bmp.width = bmp.height = 64;
             bmp.anchorOffsetX = bmp.width * 0.5;
             bmp.anchorOffsetY = bmp.height * 0.5;
