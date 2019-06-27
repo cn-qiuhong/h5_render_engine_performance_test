@@ -21,7 +21,7 @@ function create() {
         let x = W_WIDTH / W_COUNT * (i % W_COUNT);
         let y = H_HEIGHT / H_COUNT * (i / W_COUNT | 0);
         let idx = '' + (i % 100)
-        let bmp = this.add.sprite(x, y, idx)
+        let bmp = this.add.image(x, y, idx)
         bmp.displayWidth = bmp.displayHeight = 64;
         bmps.push(bmp);
     }
