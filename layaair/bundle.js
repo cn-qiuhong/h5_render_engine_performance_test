@@ -65,7 +65,7 @@ var Main = /** @class */ (function () {
     Main.prototype.loadComplete = function () {
         var textures = [];
         for (var i = 0; i < TEXTURE_COUNT; ++i) {
-            textures[i] = Laya.loader.getRes('../../ims/' + i + '.png');
+            textures[i] = Laya.loader.getRes('../ims/' + i + '.png');
         }
         var bmps = [];
         var stage = Laya.stage;
