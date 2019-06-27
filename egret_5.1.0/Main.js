@@ -20,8 +20,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -70,22 +70,9 @@ var Main = (function (_super) {
         });
     };
     Main.prototype.onConfigComplete = function (event) {
-        RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
-        RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
-        /*** 本示例关键代码段开始 ***/
-        //加载已经配置过的组
-        RES.loadGroup("preload");
-        /*** 本示例关键代码段结束 ***/
-    };
-    Main.prototype.onResourceLoadComplete = function (event) {
-        RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
-        var textures = [];
-        for (var i = 0; i < TEXTURE_COUNT; ++i) {
-            textures[i] = RES.getRes(i + '_png');
-        }
         var bmps = [];
         for (var i = 0; i < SPRITE_COUNT; ++i) {
-            var bmp = new egret.Bitmap(textures[i % TEXTURE_COUNT]);
+            var bmp = new egret.Bitmap();
             bmp.width = bmp.height = 64;
             bmp.anchorOffsetX = bmp.width * 0.5;
             bmp.anchorOffsetY = bmp.height * 0.5;
@@ -93,6 +80,20 @@ var Main = (function (_super) {
             bmp.y = H_HEIGHT / H_COUNT * (i / W_COUNT | 0);
             this.addChild(bmp);
             bmps.push(bmp);
+        }
+        var href = location.href
+        var idx = href.indexOf('/egret')
+        href = href.substr(0, idx + 1)
+        function loadIm(i) {
+            var url = href + 'ims/' + i + '.png'
+            RES.getResByUrl(url, function (texture) {
+                for (var j = i; j < SPRITE_COUNT; j += TEXTURE_COUNT) {
+                    bmps[j].texture = texture
+                }
+            })
+        }
+        for (var i = 0; i < TEXTURE_COUNT; i++) {
+            loadIm(i)
         }
         this.addEventListener(egret.Event.ENTER_FRAME, function (e) {
             for (var _i = 0, bmps_1 = bmps; _i < bmps_1.length; _i++) {
