@@ -28,7 +28,7 @@ var Main = (function (_super) {
         var bmps = [];
         for (var i = 0; i < SPRITE_COUNT; ++i) {
             var idx = i % TEXTURE_COUNT
-            var bmp = new egret.Image(idx + '_png')
+            var bmp = new eui.Image(idx + '_png')
             bmp.width = bmp.height = 64;
             bmp.anchorOffsetX = bmp.width * 0.5;
             bmp.anchorOffsetY = bmp.height * 0.5;
