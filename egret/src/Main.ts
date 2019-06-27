@@ -14,24 +14,8 @@ class Main extends eui.UILayer {
     protected createChildren(): void {
         super.createChildren();
 
-        this.runGame().catch(e => {
-            console.log(e);
-        })
-    }
-
-    private async runGame() {
-        await this.loadResource()
-        this.onResourceLoadComplete()
-    }
-
-    private async loadResource() {
-        try {
-            await RES.loadConfig("resource/default.res.json", "resource/");
-            // await RES.loadGroup('preload')
-        }
-        catch (e) {
-            console.error(e);
-        }
+        RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onResourceLoadComplete, this)
+        RES.loadConfig("resource/default.res.json", "resource/");
     }
 
     private onResourceLoadComplete(): void {
@@ -52,7 +36,7 @@ class Main extends eui.UILayer {
             bmps.push(bmp);
         }
 
-        this.addEventListener(egret.Event.ENTER_FRAME, e => {
+        this.addEventListener(egret.Event.ENTER_FRAME, () => {
             for (let bmp of bmps) {
                 bmp.rotation += 3;
             }
