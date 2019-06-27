@@ -37,7 +37,7 @@ var Main = (function (_super) {
             bmps.push(bmp);
         }
         var href = location.href
-        var idx = href.indexOf('/egret/')
+        var idx = href.indexOf('/egret')
         href = href.substr(0, idx + 1)
         function loadIm(i) {
             var url = href + 'ims/' + i + '.png'
