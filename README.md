@@ -1,6 +1,11 @@
+测试内容：
+100张256\*256像素的散图（没有打图集），每张图片生成20个显示对象，按图1一个，图2一个以此类推的顺序（防止drawcall合并）在1136*640的显示区域内均匀排布。总共2000个显示对象，drawcall也是2000
+
 测试网址：
 http://qiuhong_cn.gitee.io/h5_game_engine_webgl_2d_render_performance_test
+
 该网址很不稳定，经常访问不了，你可以clone或者下载该git到本地，然后放进一个http服务（比如nginx）目录里来访问
+
 我本地的测试结果：（配置i7 7700+intel hd graphics 630集显+8g内存）
 | engine | version | release time | fps |
 |---|---|---|---|
