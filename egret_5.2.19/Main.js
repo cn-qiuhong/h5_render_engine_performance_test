@@ -1,4 +1,4 @@
-var __reflect = (this && this.__reflect) || function (p, c, t) {
+var __reflect = (this && this.__reflect) || function(p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
 var __extends = this && this.__extends || function __extends(t, e) {
@@ -14,17 +14,18 @@ var W_COUNT = 40;
 var H_COUNT = 50;
 var W_WIDTH = 640;
 var H_HEIGHT = 1136;
-var Main = (function (_super) {
+var Main = (function(_super) {
     __extends(Main, _super);
+
     function Main() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Main.prototype.createChildren = function () {
+    Main.prototype.createChildren = function() {
         _super.prototype.createChildren.call(this);
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onResourceLoadComplete, this);
         RES.loadConfig("resource/default.res.json", "resource/");
     };
-    Main.prototype.onResourceLoadComplete = function () {
+    Main.prototype.onResourceLoadComplete = function() {
         var bmps = [];
         for (var i = 0; i < SPRITE_COUNT; ++i) {
             var bmp = new egret.Bitmap()
@@ -39,9 +40,10 @@ var Main = (function (_super) {
         var href = location.href
         var idx = href.indexOf('/egret')
         href = href.substr(0, idx + 1)
+
         function loadIm(i) {
             var url = href + 'ims/' + i + '.png'
-            RES.getResByUrl(url, function (texture) {
+            RES.getResByUrl(url, function(texture) {
                 for (var j = i; j < SPRITE_COUNT; j += TEXTURE_COUNT) {
                     bmps[j].texture = texture
                 }
@@ -50,7 +52,7 @@ var Main = (function (_super) {
         for (var i = 0; i < TEXTURE_COUNT; i++) {
             loadIm(i)
         }
-        this.addEventListener(egret.Event.ENTER_FRAME, function () {
+        this.addEventListener(egret.Event.ENTER_FRAME, function() {
             for (var _i = 0, bmps_1 = bmps; _i < bmps_1.length; _i++) {
                 var bmp = bmps_1[_i];
                 bmp.rotation += 3;
@@ -67,12 +69,13 @@ Object['assign'](fpsCon.style, {
     background: '#000',
     color: '#fff',
     top: 0,
-    left: 0
+    right: 0
 });
 document.body.appendChild(fpsCon);
-var arrFps = new Float64Array(10);
+var arrFps = new Float64Array(100);
 var lastTime = Date.now();
 var pos = 0;
+
 function updateFps() {
     var now = Date.now();
     var delta = now - lastTime;
@@ -81,7 +84,7 @@ function updateFps() {
     if (pos >= arrFps.length) {
         pos = 0;
     }
-    fpsCon.innerHTML = 'FPS: ' + (arrFps.reduce(function (prev, next) { return prev + next; }) / arrFps.length | 0);
+    fpsCon.innerHTML = 'FPS: ' + Math.round(arrFps.reduce(function(prev, next) { return prev + next; }) / arrFps.length | 0);
     lastTime = now;
     requestAnimationFrame(updateFps);
 }

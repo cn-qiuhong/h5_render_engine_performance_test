@@ -9,11 +9,12 @@ var W_WIDTH = 640;
 var H_HEIGHT = 1136;
 
 var bmps = []
+
 function create() {
     var scene = this
     var load = this.load
     load.crossOrigin = 'anonymous'
-    load.addListener(Phaser.Loader.Events.FILE_COMPLETE, function () {
+    load.addListener(Phaser.Loader.Events.FILE_COMPLETE, function() {
         var j = +arguments[0]
         for (var i = j; i < SPRITE_COUNT; i += 100) {
             var x = W_WIDTH / W_COUNT * (i % W_COUNT);
@@ -31,6 +32,7 @@ function create() {
 }
 
 var rotation = 0
+
 function update() {
     rotation += 3
     rotation %= 360
@@ -38,7 +40,7 @@ function update() {
         bmp.angle = rotation
 }
 
-window.onload = function () {
+window.onload = function() {
     var config = {
         width: W_WIDTH,
         height: H_HEIGHT,
@@ -63,9 +65,10 @@ Object['assign'](fpsCon.style, {
     left: 0
 })
 document.body.appendChild(fpsCon);
-var arrFps = new Float64Array(10);
+var arrFps = new Float64Array(100);
 var lastTime = Date.now();
 var pos = 0;
+
 function updateFps() {
     var now = Date.now();
     var delta = now - lastTime;
@@ -74,7 +77,7 @@ function updateFps() {
     if (pos >= arrFps.length) {
         pos = 0;
     }
-    fpsCon.innerHTML = 'FPS: ' + (arrFps.reduce((prev, next) => prev + next) / arrFps.length | 0);
+    fpsCon.innerHTML = 'FPS: ' + Math.round(arrFps.reduce((prev, next) => prev + next) / arrFps.length | 0);
     lastTime = now;
     requestAnimationFrame(updateFps);
 }

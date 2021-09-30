@@ -47,9 +47,10 @@ Object.assign(fpsCon.style, {
     left: 0
 })
 document.body.appendChild(fpsCon);
-let arrFps = new Float64Array(10);
+let arrFps = new Float64Array(100);
 let lastTime = Date.now();
 let pos = 0;
+
 function updateFps() {
     let now = Date.now();
     let delta = now - lastTime;
@@ -58,7 +59,7 @@ function updateFps() {
     if (pos >= arrFps.length) {
         pos = 0;
     }
-    fpsCon.innerHTML = 'FPS: ' + (arrFps.reduce((prev, next) => prev + next) / arrFps.length | 0);
+    fpsCon.innerHTML = 'FPS: ' + Math.round(arrFps.reduce((prev, next) => prev + next) / arrFps.length | 0);
     lastTime = now;
     requestAnimationFrame(updateFps);
 }
