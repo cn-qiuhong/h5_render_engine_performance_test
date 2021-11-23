@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>EaselJS</title>
+</head>
+
+<body>
+    <div>
+        <canvas id="testCanvas" width="450" height="800"></canvas>
+    </div>
+    <script src="./easeljs.min.js"></script>
+    <script src="./preload.js"></script>
+    <script>
+        var TEXTURE_COUNT = 100;
+        var SPRITE_COUNT = 2000;
+        var W_COUNT = 40;
+        var H_COUNT = 50;
+        var W_WIDTH = 450;
+        var H_HEIGHT = 800;
+
+        var href = location.href;
+        var hfar = href.split('/');
+        hfar.length = 3;
+        hfar.push('ims/');
+        var url = hfar.join('/');
+
+        var stage = new createjs.Stage(document.getElementById("testCanvas"));
+
+        var manifest = [];
+        for (var i = 0; i < TEXTURE_COUNT; i++) {
+            manifest.push({ src: url + i + '.png', id: i })
+        }
+        var loader = new createjs.LoadQueue(true, "images/");
+        var ims = []
+        var rot = 0
+        function handleFileLoad(e) {
+            // console.log('handleFileLoad', arguments)
+            var id = e.item.id
+            console.log('handleFileLoad', id)
+        }
+        loader.on("fileload", handleFileLoad);
+        function handleComplete() {
+            console.log('handleComplete', arguments)
+            for (var i = 0; i < SPRITE_COUNT; i++) {
+                var im = new createjs.Shape();
+                var id = i % 100;
+                im.graphics.beginBitmapFill(loader.getResult(id)).drawRect(0, 0, 256, 256);
+                im.scaleX = 0.25
+                im.scaleY = 0.25
+                im.regX = 128
+                im.regY = 128
+                im.x = W_WIDTH / W_COUNT * (i % W_COUNT);
+                im.y = H_HEIGHT / H_COUNT * (i / W_COUNT | 0);
+                stage.addChild(im)
+                ims.push(im)
+            }
+            stage.update()
+        }
+        loader.on("complete", handleComplete);
+        loader.loadManifest(manifest);
+
+        //显示FPS
+        var fpsCon = document.createElement('div');
+        Object.assign(fpsCon.style, {
+            position: 'fixed',
+            background: '#000',
+            color: '#fff',
+            top: 0,
+            right: 0
+        });
+        document.body.appendChild(fpsCon);
+        var arrFps = new Float64Array(100);
+        var lastTime = Date.now();
+        var pos = 0;
+
+        function updateFps() {
+            var now = Date.now();
+            var delta = now - lastTime;
+            var fps = 1000 / delta;
+            arrFps[pos++] = fps;
+            if (pos >= arrFps.length) {
+                pos = 0;
+            }
+            fpsCon.innerHTML = 'FPS: ' + Math.round(arrFps.reduce(function (prev, next) { return prev + next; }) / arrFps.length | 0);
+            lastTime = now;
+
+            rot += 3;
+            if (rot > 360)
+                rot -= 360;
+            ims.forEach(function (im) {
+                im.rotation = rot;
+            });
+            stage.update()
+
+            requestAnimationFrame(updateFps);
+        }
+        requestAnimationFrame(updateFps);
+    </script>
+</body>
+
+</html>
