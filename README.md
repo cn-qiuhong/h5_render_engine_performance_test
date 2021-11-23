@@ -11,11 +11,11 @@ http://qiuhong_cn.gitee.io/h5_game_engine_webgl_2d_render_performance_test
 |---|---|---|---|
 | Pixi.js | 4.6.2 | 2017/11/30 | 60 |
 | Phaser | 3.18.1 | 2019/6/20 | 60 |
-| Layaair | 1.7.13 | 2017/11/27 | 50 |
+| Layaair | 1.7.13 | 2017/11/27 | 53 |
 | Cocos Creator | 2.0.10 | 2019/5/28 | 45 |
-| Layaair | 2.1.0 | 2019/5/17 | 29 |
-| Egret | 5.2.19 | 2019/5/13 | 28 |
-| Egret | 5.1.0 | 2017/5/? | 28 |
+| Egret | 5.1.0 | 2017/5/? | 32 |
+| Egret | 5.2.19 | 2019/5/13 | 32 |
+| Layaair | 2.1.0 | 2019/5/17 | 31 |
 
 原作者的测试网址：（有pixi.js 4.6.0,egret 5.1.0,layaair 1.7.13 三个引擎的对比）
 https://k8w.github.io/webgl_2d_benchmark/
