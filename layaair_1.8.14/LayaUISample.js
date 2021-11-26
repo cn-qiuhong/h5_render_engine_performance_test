@@ -5,10 +5,10 @@ var H_COUNT = 50;
 var W_WIDTH = 640;
 var H_HEIGHT = 1136;
 // 程序入口
-var GameMain = /** @class */ (function() {
+var GameMain = /** @class */ (function () {
     function GameMain() {
-        // Laya.init(640, 1136, Laya.WebGL);
-        Laya.init(640, 1136);
+        Laya.init(640, 1136, Laya.WebGL);
+        // Laya.init(640, 1136);
         Laya.Stat.show();
         Laya.stage.bgColor = "#232628";
         Laya.stage.scaleMode = 'showall';
@@ -24,7 +24,7 @@ var GameMain = /** @class */ (function() {
             stage.addChild(sprite);
             sprites.push(sprite);
         }
-        Laya.timer.frameLoop(1, this, function(e) {
+        Laya.timer.frameLoop(1, this, function (e) {
             for (var _i = 0, sprites_1 = sprites; _i < sprites_1.length; _i++) {
                 var sprite = sprites_1[_i];
                 sprite.rotation += 3;
@@ -47,7 +47,6 @@ document.body.appendChild(fpsCon);
 var arrFps = new Float64Array(100);
 var lastTime = Date.now();
 var pos = 0;
-
 function updateFps() {
     var now = Date.now();
     var delta = now - lastTime;
@@ -56,7 +55,7 @@ function updateFps() {
     if (pos >= arrFps.length) {
         pos = 0;
     }
-    var f = Math.round(arrFps.reduce(function(prev, next) { return prev + next; }) / arrFps.length);
+    var f = Math.round(arrFps.reduce(function (prev, next) { return prev + next; }) / arrFps.length);
     fpsCon.innerHTML = 'FPS: ' + (f | 0);
     lastTime = now;
     requestAnimationFrame(updateFps);
