@@ -54,31 +54,3 @@ window.onload = function() {
     };
     new Phaser.Game(config);
 };
-
-//显示FPS
-var fpsCon = document.createElement('div');
-Object['assign'](fpsCon.style, {
-    position: 'fixed',
-    background: '#000',
-    color: '#fff',
-    top: 0,
-    left: 0
-})
-document.body.appendChild(fpsCon);
-var arrFps = new Float64Array(100);
-var lastTime = Date.now();
-var pos = 0;
-
-function updateFps() {
-    var now = Date.now();
-    var delta = now - lastTime;
-    var fps = 1000 / delta;
-    arrFps[pos++] = fps;
-    if (pos >= arrFps.length) {
-        pos = 0;
-    }
-    fpsCon.innerHTML = 'FPS: ' + Math.round(arrFps.reduce((prev, next) => prev + next) / arrFps.length | 0);
-    lastTime = now;
-    requestAnimationFrame(updateFps);
-}
-requestAnimationFrame(updateFps);

@@ -1,37 +1,37 @@
-var __reflect = (this && this.__reflect) || function(p, c, t) {
+var __reflect = (this && this.__reflect) || function (p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
-var __extends = (this && this.__extends) || (function() {
+var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] }
-            instanceof Array && function(d, b) { d.__proto__ = b; }) ||
-        function(d, b) {
+            instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) {
             for (var p in b)
                 if (b.hasOwnProperty(p)) d[p] = b[p];
         };
-    return function(d, b) {
+    return function (d, b) {
         extendStatics(d, b);
 
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __awaiter = (this && this.__awaiter) || function(thisArg, _arguments, P, generator) {
-    return new(P || (P = Promise))(function(resolve, reject) {
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
 
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
 
-        function step(result) { result.done ? resolve(result.value) : new P(function(resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator = (this && this.__generator) || function(thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] },
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] },
         f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
 
-    function verb(n) { return function(v) { return step([n, v]); }; }
+    function verb(n) { return function (v) { return step([n, v]); }; }
 
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -87,7 +87,7 @@ var W_COUNT = 40;
 var H_COUNT = 50;
 var W_WIDTH = 640;
 var H_HEIGHT = 1136;
-var Main = (function(_super) {
+var Main = (function (_super) {
     __extends(Main, _super);
 
     function Main() {
@@ -95,17 +95,17 @@ var Main = (function(_super) {
         _this.once(egret.Event.ADDED_TO_STAGE, _this.onAddToStage, _this);
         return _this;
     }
-    Main.prototype.onAddToStage = function(event) {
-        return __awaiter(this, void 0, void 0, function() {
-            return __generator(this, function(_a) {
+    Main.prototype.onAddToStage = function (event) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 //初始化Resource资源加载库
                 RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
                 RES.loadConfig("resource/default.res.json", "resource/");
-                return [2 /*return*/ ];
+                return [2 /*return*/];
             });
         });
     };
-    Main.prototype.onConfigComplete = function(event) {
+    Main.prototype.onConfigComplete = function (event) {
         var bmps = [];
         for (var i = 0; i < SPRITE_COUNT; ++i) {
             var bmp = new egret.Bitmap();
@@ -123,7 +123,7 @@ var Main = (function(_super) {
 
         function loadIm(i) {
             var url = href + 'ims/' + i + '.png'
-            RES.getResByUrl(url, function(texture) {
+            RES.getResByUrl(url, function (texture) {
                 for (var j = i; j < SPRITE_COUNT; j += TEXTURE_COUNT) {
                     bmps[j].texture = texture
                 }
@@ -132,7 +132,7 @@ var Main = (function(_super) {
         for (var i = 0; i < TEXTURE_COUNT; i++) {
             loadIm(i)
         }
-        this.addEventListener(egret.Event.ENTER_FRAME, function(e) {
+        this.addEventListener(egret.Event.ENTER_FRAME, function (e) {
             for (var _i = 0, bmps_1 = bmps; _i < bmps_1.length; _i++) {
                 var bmp = bmps_1[_i];
                 bmp.rotation += 3;
@@ -142,30 +142,3 @@ var Main = (function(_super) {
     return Main;
 }(egret.DisplayObjectContainer));
 __reflect(Main.prototype, "Main");
-//显示FPS
-var fpsCon = document.createElement('div');
-Object.assign(fpsCon.style, {
-    position: 'fixed',
-    background: '#000',
-    color: '#fff',
-    top: 0,
-    right: 0
-});
-document.body.appendChild(fpsCon);
-var arrFps = new Float64Array(100);
-var lastTime = Date.now();
-var pos = 0;
-
-function updateFps() {
-    var now = Date.now();
-    var delta = now - lastTime;
-    var fps = 1000 / delta;
-    arrFps[pos++] = fps;
-    if (pos >= arrFps.length) {
-        pos = 0;
-    }
-    fpsCon.innerHTML = 'FPS: ' + Math.round(arrFps.reduce(function(prev, next) { return prev + next; }) / arrFps.length | 0);
-    lastTime = now;
-    requestAnimationFrame(updateFps);
-}
-requestAnimationFrame(updateFps);

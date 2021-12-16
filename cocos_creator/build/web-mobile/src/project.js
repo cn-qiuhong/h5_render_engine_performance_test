@@ -40,15 +40,5 @@ window.__require = function e(r, n, t) {
                 }, r = __decorate([o], r)
             }(cc.Component));
         n.default = i;
-        var c = document.createElement("div");
-        Object.assign(c.style, { position: "fixed", background: "#000", color: "#fff", top: 0, left: 0 }), document.body.appendChild(c);
-        var a = new Float64Array(100),
-            u = Date.now(),
-            f = 0;
-        requestAnimationFrame(function e() {
-            var r = Date.now(),
-                n = 1e3 / (r - u);
-            a[f++] = n, f >= a.length && (f = 0), c.innerHTML = "FPS: " + Math.round(a.reduce(function (e, r) { return e + r }) / a.length | 0), u = r, requestAnimationFrame(e)
-        }), cc._RF.pop()
     }, {}]
 }, {}, ["Main"]);
