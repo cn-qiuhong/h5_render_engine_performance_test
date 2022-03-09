@@ -12,7 +12,7 @@
     </div>
     <script src="./easeljs.min.js"></script>
     <script src="./preload.js"></script>
-    <script src="/stats.js"></script>
+    <script src="../stats.js"></script>
     <script>
         var TEXTURE_COUNT = 100;
         var SPRITE_COUNT = 2000;
@@ -23,7 +23,13 @@
 
         var href = location.href;
         var hfar = href.split('/');
-        hfar.length = 3;
+        for (var i in hfar) {
+            var tx = hfar[i];
+            if (tx == 'easeljs') {
+                hfar.splice(i);
+                break
+            }
+        }
         hfar.push('ims/');
         var url = hfar.join('/');
 
