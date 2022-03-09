@@ -73,9 +73,9 @@
                  * "calculateCanvasScaleFactor": //a function return canvas scale factor
                  * }
                  **/
+                var renderMode = location.search == '?mode=webgl' ? 'webgl' : 'canvas'
                 egret.runEgret({
-                    // renderMode: "webgl",
-                    renderMode: "canvas",
+                    renderMode: renderMode,
                     audioType: 0,
                     calculateCanvasScaleFactor: function (context) {
                         var backingStore = context.backingStorePixelRatio ||

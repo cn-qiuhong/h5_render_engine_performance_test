@@ -5,10 +5,12 @@ var H_COUNT = 50;
 var W_WIDTH = 640;
 var H_HEIGHT = 1136;
 // 程序入口
-var GameMain = /** @class */ (function() {
+var GameMain = /** @class */ (function () {
     function GameMain() {
-        // Laya.init(640, 1136, Laya.WebGL);
-        Laya.init(640, 1136);
+        if (location.search == '?mode=webgl')
+            Laya.init(640, 1136, Laya.WebGL);
+        else
+            Laya.init(640, 1136);
         Laya.Stat.show();
         Laya.stage.bgColor = "#232628";
         Laya.stage.scaleMode = 'showall';
@@ -24,7 +26,7 @@ var GameMain = /** @class */ (function() {
             stage.addChild(sprite);
             sprites.push(sprite);
         }
-        Laya.timer.frameLoop(1, this, function(e) {
+        Laya.timer.frameLoop(1, this, function (e) {
             for (var _i = 0, sprites_1 = sprites; _i < sprites_1.length; _i++) {
                 var sprite = sprites_1[_i];
                 sprite.rotation += 3;

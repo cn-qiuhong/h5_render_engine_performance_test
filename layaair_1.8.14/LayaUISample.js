@@ -7,8 +7,10 @@ var H_HEIGHT = 1136;
 // 程序入口
 var GameMain = /** @class */ (function () {
     function GameMain() {
-        // Laya.init(640, 1136, Laya.WebGL);
-        Laya.init(640, 1136);
+        if (location.search == '?mode=webgl')
+            Laya.init(640, 1136, Laya.WebGL);
+        else
+            Laya.init(640, 1136);
         Laya.Stat.show();
         Laya.stage.bgColor = "#232628";
         Laya.stage.scaleMode = 'showall';
