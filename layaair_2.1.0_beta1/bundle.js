@@ -70,7 +70,6 @@ var __extends = (this && this.__extends) || (function() {
             function Main() {
                 //根据IDE设置初始化引擎		
                 Laya.init(640, 1136, Laya["WebGL"]);
-                // Laya.init(640, 1136);
                 Laya.Stat.show();
                 Laya.stage.scaleMode = 'showall';
                 var sprites = [];

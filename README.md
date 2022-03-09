@@ -16,7 +16,8 @@ http://qiuhong_cn.gitee.io/h5_render_engine_performance_test
 | Cocos Creator | 2.0.10 | 2019/5/28 | 45 |
 | Egret | 5.1.0 | 2017/5/? | 31 | 59 |
 | Egret | 5.2.19 | 2019/5/13 | 31 | 59 |
-| Layaair | 2.1.0 | 2019/5/17 | 32 | 26 |
+| Layaair | 2.1.0 | 2019/5/17 | 32 |
+| Layaair | 2.13.0 | 2021/12/20 | 29 |
 
 原作者的测试网址：（有pixi.js 4.6.0,egret 5.1.0,layaair 1.7.13 三个引擎的对比）
 https://k8w.github.io/webgl_2d_benchmark/
