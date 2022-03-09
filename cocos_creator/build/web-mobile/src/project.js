@@ -15,7 +15,13 @@ window.__require = function e(r, n, t) {
         cc._RF.push(r, "59a4b6O341DHYTeMHDuSyjD", "Main"), Object.defineProperty(n, "__esModule", { value: !0 });
         var href = location.href;
         var hfar = href.split('/');
-        hfar.length = 3;
+        for (var i in hfar) {
+            var tx = hfar[i];
+            if (tx == 'cocos_creator') {
+                hfar.splice(i);
+                break
+            }
+        }
         hfar.push('ims/');
         var _url_ = hfar.join('/');
         var t = cc._decorator,
