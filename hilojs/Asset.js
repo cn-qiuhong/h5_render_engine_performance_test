@@ -9,7 +9,7 @@ var Asset = Hilo.Class.create({
     load: function () {
         var resources = [];
         for (var i = 0; i < 100; i++) {
-            var src = "/ims/".concat(i, ".png");
+            var src = "../ims/".concat(i, ".png");
             resources.push({ id: 'im' + i, src: src });
         }
         this.queue = new Hilo.LoadQueue();
