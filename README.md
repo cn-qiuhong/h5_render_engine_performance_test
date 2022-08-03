@@ -12,7 +12,7 @@ http://qiuhong_cn.gitee.io/h5_render_engine_performance_test
 | Phaser | 3.18.1 | 2019/6/20 | 60 |
 | Layaair | 1.7.13 | 2017/11/27 | 52 | 58 |
 | Layaair | 1.8.14 | 2021/7/21 | 51 | 58 |
-| HiloJs | 2.0.2 | 2020/8/13 || 55 |
+| HiloJs | 2.0.2 | 2020/8/13 || 57 |
 | EaselJs | 1.0.0 | 2017/9/16 | 50 |
 | Cocos Creator | 2.0.10 | 2019/5/28 | 45 |
 | Egret | 5.1.0 | 2017/5/? | 31 | 59 |
