@@ -19,6 +19,7 @@ http://qiuhong_cn.gitee.io/h5_render_engine_performance_test
 | Egret | 5.2.19 | 2019/5/13 | 31 | 59 |
 | Layaair | 2.1.0 | 2019/5/17 | 32 |
 | Layaair | 2.13.0 | 2021/12/20 | 29 |
+| Solar2d | 2022.3677 | 2022/8/3 | 10 |
 
 原作者的测试网址：（有pixi.js 4.6.0,egret 5.1.0,layaair 1.7.13 三个引擎的对比）
 https://k8w.github.io/webgl_2d_benchmark/
