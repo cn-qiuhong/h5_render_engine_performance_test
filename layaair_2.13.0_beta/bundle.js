@@ -23,8 +23,7 @@
 
     class Main {
         constructor() {
-            if(location.search.includes('canvas'))Laya.init(GameConfig.width, GameConfig.height, Laya['HTMLCanvas']);
-            else Laya.init(GameConfig.width, GameConfig.height, Laya["WebGL"]);
+            Laya.init(GameConfig.width, GameConfig.height, Laya["WebGL"]);
             Laya.stage.scaleMode = GameConfig.scaleMode;
             Laya.stage.screenMode = GameConfig.screenMode;
             Laya.stage.alignV = GameConfig.alignV;
