@@ -2,8 +2,7 @@
 100张256\*256px的散图（没有打图集），每张图片生成20个显示对象，将图片缩放到64\*64px后按图1一个，图2一个以此类推的顺序（防止drawcall合并，总共2000个显示对象，drawcall也是2000）在640*1136的显示区域内均匀排布。然后所有图片每帧旋转3°。
 
 测试网址：
-http://qiuhong_cn.gitee.io/h5_render_engine_performance_test
-<br>该网址很不稳定，经常访问不了，你可以clone或者下载该git到本地，然后放进一个http服务（比如nginx）目录里来访问
+[http://qiuhong_cn.gitee.io/h5_render_engine_performance_test](https://cn-qiuhong.github.io/h5_render_engine_performance_test)
 
 我本地的测试结果：（配置i7 7700+intel hd graphics 630集显+8g内存）
 | engine | version | release time | fps(webgl) | fps(canvas) |
